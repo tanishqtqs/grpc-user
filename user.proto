@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package user;
+
+message User {
+    int64 id = 1;
+    string fname = 2;
+    string city = 3;
+    int64 phone = 4;
+    double height = 5;
+    bool married = 6;
+}
+
+service UserService {
+    rpc GetUserById (UserRequest) returns (User);
+    rpc GetUsersByIds (UserIdsRequest) returns (repeated User);
+}
+
+message UserRequest {
+    int64 id = 1;
+}
+
+message UserIdsRequest {
+    repeated int64 ids = 1;
+}
